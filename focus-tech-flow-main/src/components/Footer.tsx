@@ -19,7 +19,7 @@ const Footer = () => {
           
           <div className="flex justify-center">
             <a 
-              href="https://linkedin.com/company/focustechrecruitment" 
+              href="https://www.linkedin.com/company/focus-tech-recruitment/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"

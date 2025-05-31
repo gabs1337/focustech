@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Users } from 'lucide-react';
+import { Menu, X, Users, BrainCircuit } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,9 +21,8 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <button 
           onClick={scrollToTop}
-          className="flex items-center space-x-2 text-2xl font-bold text-black hover:opacity-80 transition-opacity"
-        >
-          <Users className="w-6 h-6" />
+          className="flex items-center space-x-2 text-2xl font-bold text-black hover:opacity-80 transition-opacity">
+          <BrainCircuit className="w-6 h-6" />
           <span>FOCUS</span>
         </button>
         

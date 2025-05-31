@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Code, Database, Globe, Smartphone, Cloud, Cpu, UserPlus, Zap, Wifi, Terminal, Laptop, Server } from 'lucide-react';
+import { Code, Database, Globe, Smartphone, Cloud, Cpu, UserPlus, Zap, Wifi, Terminal, Laptop, Server, BrainCircuit } from 'lucide-react';
 import CompanyModal from './CompanyModal';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -30,8 +30,8 @@ const HeroSection = () => {
         {/* Enhanced Parallax Background Icons - Smaller size */}
         <div className="absolute inset-0 pointer-events-none">
           {techIcons.map((item, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`absolute ${item.position} opacity-30 text-white tech-float`}
               style={{ animationDelay: `${index * 0.5}s` }}
             >
@@ -42,33 +42,33 @@ const HeroSection = () => {
 
         <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="text-center">
-            <div 
+            <div
               ref={titleRef}
-              className={`scroll-fade-in ${titleVisible ? 'visible' : ''}`}
-            >
-              <h1 className="text-3xl md:text-8xl font-bold mb-4 leading-tight tech-text">
-                Focus Tech<br />
-                <span className="text-red-500 tech-glow">Recruitment</span>
+              className={`scroll-fade-in ${titleVisible ? 'visible' : ''}`}>
+              <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight tech-text">
+                Focus<br />
+                <span className="text-red-500 tech-glow"> Tech Recruitment</span>
               </h1>
             </div>
-            
-            <div 
+
+            <div
               ref={descRef}
               className={`scroll-fade-in-delay ${descVisible ? 'visible' : ''}`}
             >
-              <p className="text-lg md:text-xl mb-8 text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Consultoria especializada em recrutamento tech, 100% remota e personalizada. 
-                Atendemos empresas de todo o Brasil, focados em encontrar profissionais com 
+              <p className="text-xl sm:text-2xl md:text-3xl mb-10 text-gray-200 leading-relaxed max-w-4xl mx-auto text-center">
+                Consultoria especializada em recrutamento tech, 100% remota e personalizada.
+                Atendemos empresas de todo o Brasil, focados em encontrar profissionais com
                 as competências técnicas e comportamentais ideais.
               </p>
+
             </div>
-            
-            <div 
+
+            <div
               ref={buttonRef}
               className={`scroll-fade-in-delay ${buttonVisible ? 'visible' : ''}`}
             >
-              <button 
-                onClick={() => setIsModalOpen(true)} 
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="bg-white hover:bg-gray-100 text-black px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center space-x-2 mx-auto"
               >
                 <UserPlus className="w-4 h-4" />

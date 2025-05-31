@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Building, MessageCircle, Mail, Send, User } from 'lucide-react';
+import { X, Building, MessageCircle, Mail, Send, User, MailPlus } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
 
@@ -58,7 +58,7 @@ export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) =
 
         <div className="text-center mb-6">
           <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-            <Building className="w-8 h-8 text-white" />
+            <MailPlus className="w-8 h-8 text-white" />
           </div>
           <h3 className="text-2xl font-semibold text-gray-900">Solicitar Recrutamento</h3>
           <p className="text-gray-600 mt-2">Vamos conversar sobre suas necessidades</p>
