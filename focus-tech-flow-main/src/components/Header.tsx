@@ -19,15 +19,16 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <button 
+        <button
           onClick={scrollToTop}
-          className="flex items-center space-x-2 text-2xl font-bold text-black hover:opacity-80 transition-opacity">
-          <BrainCircuit className="w-6 h-6" />
-          <span>FOCUS</span>
+          className="flex items-center space-x-2 text-2xl font-bold text-black hover:opacity-80 transition-opacity"
+        >
+          <img src="/logo.png" alt="Focus Icon" className="w-10 h-10" />
+          <span>Focus Tech Recruitment</span>
         </button>
-        
+
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8 justify-center flex-1">
+        <nav className="hidden md:flex space-x-8 justify-end flex-1">
           <button onClick={() => scrollToSection('sobre')} className="text-gray-700 hover:text-black transition-colors">
             Sobre
           </button>
@@ -43,7 +44,7 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden text-black"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >

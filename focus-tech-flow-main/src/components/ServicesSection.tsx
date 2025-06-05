@@ -59,7 +59,7 @@ const ServicesSection = () => {
     <section id="servicos" className="min-h-screen bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <div 
+          <div
             ref={titleRef}
             className={`scroll-fade-in ${titleVisible ? 'visible' : ''}`}
           >
@@ -68,25 +68,23 @@ const ServicesSection = () => {
             </h2>
             <div className="w-20 h-1 bg-black mx-auto mb-4"></div>
           </div>
-          
-          <div 
+
+          <div
             ref={descRef}
             className={`scroll-fade-in-delay ${descVisible ? 'visible' : ''}`}
           >
             <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Oferecemos um processo completo de recrutamento tech, desde o mapeamento inicial 
-              até o acompanhamento pós-contratação. Nossa metodologia garante a identificação 
-              dos profissionais ideais para sua empresa.
+              Oferecemos um processo completo de recrutamento em tecnologia, desde o mapeamento inicial até o acompanhamento pós-contratação. Nossa metodologia garante a identificação dos profissionais ideais para sua empresa
             </p>
           </div>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const { ref, isVisible } = useScrollAnimation();
-            
+
             return (
-              <div 
+              <div
                 key={index}
                 ref={ref}
                 className={`bg-gray-50 p-6 rounded-xl card-hover cursor-pointer border border-gray-200 scroll-fade-in ${isVisible ? 'visible' : ''}`}

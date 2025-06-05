@@ -3,21 +3,31 @@ import { X, Building, MessageCircle, Mail, Send, User, MailPlus } from 'lucide-r
 import { toast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
 
-
 interface CompanyModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) => {
-  const [form, setForm] = useState({ contact: '', method: 'whatsapp' });
+  const [form, setForm] = useState({ 
+    name: '',
+    company: '',
+    contact: '', 
+    method: 'whatsapp',
+    message: '' 
+  });
   const [loadingCompanyModal, setLoadingCompanyModal] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoadingCompanyModal(true)
+    setLoadingCompanyModal(true);
+    
     const templateParams = {
+      name: form.name,
+      company: form.company,
       method: form.method,
       contact: form.contact,
+      message: form.message
     };
 
     emailjs.send(
@@ -31,7 +41,13 @@ export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) =
           title: "Solicitação enviada!",
           description: "Entraremos em contato em breve para discutir suas necessidades.",
         });
-        setForm({ contact: '', method: 'whatsapp' });
+        setForm({ 
+          name: '',
+          company: '',
+          contact: '', 
+          method: 'whatsapp',
+          message: '' 
+        });
         onClose();
       })
       .catch(() => {
@@ -65,6 +81,40 @@ export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) =
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Nome</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <User className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                placeholder="Seu nome"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-black focus:border-transparent"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Building className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                value={form.company}
+                onChange={(e) => setForm({ ...form, company: e.target.value })}
+                placeholder="Nome da empresa"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-black focus:border-transparent"
+                required
+              />
+            </div>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Método de Contato Preferido</label>
             <div className="flex gap-4">
@@ -114,6 +164,17 @@ export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) =
             </div>
           </div>
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
+            <textarea
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              placeholder="Descreva suas necessidades de recrutamento"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent min-h-[100px]"
+              required
+            />
+          </div>
+
           <div className="flex gap-3">
             <button
               type="button"
@@ -126,7 +187,8 @@ export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) =
               type="submit"
               disabled={loadingCompanyModal}
               className={`w-full bg-black text-white py-2 rounded-full font-semibold transition-colors flex items-center justify-center space-x-2 text-sm
-    ${loadingCompanyModal ? 'opacity-70 cursor-not-allowed' : 'hover:bg-gray-800'}`}>
+                ${loadingCompanyModal ? 'opacity-70 cursor-not-allowed' : 'hover:bg-gray-800'}`}
+            >
               {loadingCompanyModal ? (
                 <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
@@ -145,4 +207,5 @@ export const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose }) =
     </div>
   );
 };
+
 export default CompanyModal;

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Building, User, MessageCircle, Mail, Phone, Linkedin, Send } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
@@ -7,12 +6,19 @@ import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
   const [activeTab, setActiveTab] = useState('empresa');
-  const [companyForm, setCompanyForm] = useState({ contact: '', method: 'whatsapp' });
+  const [companyForm, setCompanyForm] = useState({ 
+    name: '',
+    company: '',
+    contact: '', 
+    method: 'whatsapp',
+    message: '' 
+  });
   const [candidateForm, setCandidateForm] = useState({
     nome: '',
     whatsapp: '',
     email: '',
-    linkedin: ''
+    linkedin: '',
+    areas: ''
   });
 
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
@@ -27,8 +33,11 @@ const ContactSection = () => {
     setLoadingCompany(true);
 
     const templateParams = {
+      name: companyForm.name,
+      company: companyForm.company,
       contact: companyForm.contact,
       method: companyForm.method,
+      message: companyForm.message
     };
 
     emailjs.send(
@@ -42,7 +51,13 @@ const ContactSection = () => {
           title: "Solicitação enviada!",
           description: "Entraremos em contato em breve para discutir suas necessidades.",
         });
-        setCompanyForm({ contact: '', method: 'whatsapp' });
+        setCompanyForm({ 
+          name: '',
+          company: '',
+          contact: '', 
+          method: 'whatsapp',
+          message: '' 
+        });
       })
       .catch(() => {
         toast({
@@ -65,6 +80,7 @@ const ContactSection = () => {
       whatsapp: candidateForm.whatsapp,
       email: candidateForm.email,
       linkedin: candidateForm.linkedin,
+      areas: candidateForm.areas
     };
 
     emailjs.send(
@@ -83,6 +99,7 @@ const ContactSection = () => {
           whatsapp: '',
           email: '',
           linkedin: '',
+          areas: ''
         });
       })
       .catch(() => {
@@ -96,7 +113,6 @@ const ContactSection = () => {
         setLoadingCandidate(false);
       });
   };
-
 
   return (
     <section id="contato" className="min-h-screen bg-white py-16">
@@ -117,9 +133,8 @@ const ContactSection = () => {
             className={`scroll-fade-in-delay ${descVisible ? 'visible' : ''}`}
           >
             <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Estamos prontos para ajudar sua empresa a encontrar os melhores talentos tech
-              ou para registrar seu perfil profissional. Entre em contato conosco e
-              descubra como podemos transformar seu processo de recrutamento.
+              Nosso objetivo é ser mais do que uma consultoria de recrutamento queremos ser parceiros estratégicos na construção de times de alta performance em tecnologia.
+              Entre em contato conosco e descubra como podemos transformar seu processo de recrutamento.
             </p>
           </div>
         </div>
@@ -164,6 +179,40 @@ const ContactSection = () => {
                 Formulário para Empresas
               </h3>
               <form onSubmit={handleCompanySubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Nome</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <User className="h-4 w-4 text-gray-400" />
+                    </div>
+                    <input
+                      type="text"
+                      value={companyForm.name}
+                      onChange={(e) => setCompanyForm({ ...companyForm, name: e.target.value })}
+                      placeholder="Seu nome"
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-black focus:border-transparent text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Building className="h-4 w-4 text-gray-400" />
+                    </div>
+                    <input
+                      type="text"
+                      value={companyForm.company}
+                      onChange={(e) => setCompanyForm({ ...companyForm, company: e.target.value })}
+                      placeholder="Nome da empresa"
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-black focus:border-transparent text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Método de Contato Preferido
@@ -214,10 +263,21 @@ const ContactSection = () => {
                   </div>
                 </div>
 
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
+                  <textarea
+                    value={companyForm.message}
+                    onChange={(e) => setCompanyForm({ ...companyForm, message: e.target.value })}
+                    placeholder="Descreva suas necessidades de recrutamento"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent min-h-[100px] text-sm"
+                    required
+                  />
+                </div>
+
                 <button
                   type="submit"
                   disabled={loadingCompany}
-                  className={`w-full bg-black text-white py-2 rounded-full font-semibold transition-colors flex items-center justify-center space-x-2 text-sm${loadingCompany ? 'opacity-70 cursor-not-allowed' : 'hover:bg-gray-800'}`}>
+                  className={`w-full bg-black text-white py-2 rounded-full font-semibold transition-colors flex items-center justify-center space-x-2 text-sm ${loadingCompany ? 'opacity-70 cursor-not-allowed' : 'hover:bg-gray-800'}`}>
                   {loadingCompany ? (
                     <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
@@ -230,8 +290,6 @@ const ContactSection = () => {
                     </>
                   )}
                 </button>
-
-
               </form>
             </div>
           )}
@@ -313,6 +371,18 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Áreas de Atuação</label>
+                  <textarea
+                    value={candidateForm.areas}
+                    onChange={(e) => setCandidateForm({ ...candidateForm, areas: e.target.value })}
+                    placeholder="Descreva seus principais domínios e áreas de atuação"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent min-h-[100px] text-sm"
+                    required
+                  />
+                </div>
+
                 <button
                   type="submit"
                   disabled={loadingCandidate}
