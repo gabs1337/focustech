@@ -91,8 +91,8 @@ const ContactSection = () => {
     )
       .then(() => {
         toast({
-          title: "Solicitação enviada!",
-          description: "Entraremos em contato em breve para discutir suas necessidades.",
+          title: "Cadastro realizado!",
+          description: "Agradecemos o envio de suas informações! Assim que tivermos vagas no seu perfil, entraremos em contato!",
         });
         setCandidateForm({
           nome: '',

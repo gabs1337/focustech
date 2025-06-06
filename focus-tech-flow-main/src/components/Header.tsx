@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Menu, X, Users, BrainCircuit } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ const Header = () => {
           className="flex items-center space-x-2 text-2xl font-bold text-black hover:opacity-80 transition-opacity"
         >
           <img src="/logo.png" alt="Focus Icon" className="w-10 h-10" />
-          <span>Focus Tech Recruitment</span>
+          <span className='tech-text'>Focus Tech Recruitment</span>
         </button>
 
         {/* Desktop Menu */}
@@ -38,9 +39,14 @@ const Header = () => {
           <button onClick={() => scrollToSection('beneficios')} className="text-gray-700 hover:text-black transition-colors">
             Benefícios
           </button>
+          <button
+            onClick={() => toast({ title: "Disponível em breve!" })} className="text-gray-700 hover:text-black transition-colors">
+            Vagas
+          </button>
           <button onClick={() => scrollToSection('contato')} className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors font-semibold">
             Contato
           </button>
+          
         </nav>
 
         {/* Mobile Menu Button */}

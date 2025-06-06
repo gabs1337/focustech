@@ -26,7 +26,7 @@ const BenefitsSection = () => {
     {
       icon: DollarSign,
       title: "Custo-Benefício otimizado",
-      description: "Investimento inteligente com retorno garantido"
+      description: "Trabalhamos vagas com taxa de serviço no sucesso, ou seja, pagamento após contratação do candidato ideal"
     },
     {
       icon: MapPin,
