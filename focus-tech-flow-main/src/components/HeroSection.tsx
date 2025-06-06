@@ -45,7 +45,7 @@ const HeroSection = () => {
             <div
               ref={titleRef}
               className={`scroll-fade-in ${titleVisible ? 'visible' : ''}`}>
-              <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight tech-text">
+              <h1 className="text-4xl md:text-8xl font-bold mb-4 leading-tight tech-text">
                 Focus<br />
                 <span className="text-white-500">Tech Recruitment</span>
               </h1>
@@ -55,7 +55,7 @@ const HeroSection = () => {
               ref={descRef}
               className={`scroll-fade-in-delay ${descVisible ? 'visible' : ''}`}
             >
-              <p className="text-xl sm:text-2xl md:text-3xl mb-10 text-gray-200 leading-relaxed max-w-4xl mx-auto tech-text">
+              <p className="text-base sm:text-xl md:text-2xl mb-6 md:mb-10 text-gray-200 leading-normal sm:leading-relaxed max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto tech-text">
                 Consultoria especializada em recrutamento tech, 100% personalizada para o seu negócio. Atendemos empresas de todo o Brasil, focados em encontrar profissionais com as competências técnicas e comportamentais ideais.
               </p>
 

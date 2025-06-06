@@ -71,6 +71,10 @@ const Header = () => {
             <button onClick={() => scrollToSection('beneficios')} className="px-4 py-3 text-left text-gray-700 hover:bg-gray-100">
               Benefícios
             </button>
+            <button
+            onClick={() => toast({ title: "Disponível em breve!" })} className="px-4 py-3 text-left text-gray-700 hover:bg-gray-100">
+            Vagas
+            </button>
             <button onClick={() => scrollToSection('contato')} className="mx-4 my-2 bg-black text-white px-4 py-3 rounded-full hover:bg-gray-800 transition-colors font-semibold text-center">
               Contato
             </button>
